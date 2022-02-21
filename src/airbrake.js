@@ -49,15 +49,15 @@ export const initialise = () => {
     })
 
     // Ensure uncaught exceptions/rejections are logged to the native console
-    process.on('uncaughtExceptionMonitor', err => nativeConsoleMethods.error(err))
+    //process.on('uncaughtExceptionMonitor', err => nativeConsoleMethods.error(err))
 
     // Override the @airbrake/node uncaughtException/unhandledRejection handlers with our own as errors were not flushing correctly.
     const flushAndDie = async () => {
       await airbrake.flush()
       process.exit(1)
     }
-    process.on('uncaughtException', flushAndDie)
-    process.on('unhandledRejection', flushAndDie)
+    //process.on('uncaughtException', flushAndDie)
+    //process.on('unhandledRejection', flushAndDie)
   }
   return !!airbrake
 }
